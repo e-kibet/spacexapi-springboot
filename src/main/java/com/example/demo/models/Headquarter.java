@@ -3,6 +3,7 @@ package com.example.demo.models;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "headquarters", uniqueConstraints = { @UniqueConstraint(columnNames = { "address" })})
 public class Headquarter {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -13,6 +14,26 @@ public class Headquarter {
     private String city;
     @Column(name="state")
     private String state;
+    @Column(name="created_at")
+    private String created_at;
+    @Column(name = "updated_at")
+    private String updated_at;
+
+    public String getCreated_at() {
+        return created_at;
+    }
+
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
+    }
+
+    public String getUpdated_at() {
+        return updated_at;
+    }
+
+    public void setUpdated_at(String updated_at) {
+        this.updated_at = updated_at;
+    }
 
     public Headquarter() {
     }
