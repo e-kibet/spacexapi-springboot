@@ -3,7 +3,7 @@ package com.example.demo.models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orbits", uniqueConstraints = { @UniqueConstraint(columnNames = { "name" })})
+@Table(name = "orbits", uniqueConstraints = { @UniqueConstraint(columnNames = { "reference_system" })})
 public class Orbit {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
