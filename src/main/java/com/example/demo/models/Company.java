@@ -1,4 +1,8 @@
 package com.example.demo.models;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -6,11 +10,15 @@ import java.util.List;
 
 @Entity
 @Table(name = "companies", uniqueConstraints = { @UniqueConstraint(columnNames = { "name" })})
+@ToString//lombok to handle the toString boilecode
+@AllArgsConstructor
+@NoArgsConstructor
+@EqualsAndHashCode
 public class Company {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
-    @NotBlank
+    @NotBlank(message = "name must be not empty")
     @Column(name = "name")
     @Size(max = 40)
     private String name;

@@ -1,9 +1,16 @@
 package com.example.demo.models;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "headquarters")
+@ToString
+@AllArgsConstructor
+@NoArgsConstructor
 public class Headquarter {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -19,60 +26,4 @@ public class Headquarter {
     @Column(name = "updated_at")
     private String updated_at;
 
-    public String getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(String created_at) {
-        this.created_at = created_at;
-    }
-
-    public String getUpdated_at() {
-        return updated_at;
-    }
-
-    public void setUpdated_at(String updated_at) {
-        this.updated_at = updated_at;
-    }
-
-    public Headquarter() {
-    }
-
-    public Headquarter(String address, String city, String state) {
-        this.address = address;
-        this.city = city;
-        this.state = state;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
 }

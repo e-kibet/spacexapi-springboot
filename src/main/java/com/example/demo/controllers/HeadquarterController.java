@@ -3,11 +3,13 @@ package com.example.demo.controllers;
 
 import com.example.demo.models.Headquarter;
 import com.example.demo.services.HeadquarterService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path="api/v1/headquarters")
+@AllArgsConstructor
 public class HeadquarterController {
     @Autowired
     private HeadquarterService headquarterService;
