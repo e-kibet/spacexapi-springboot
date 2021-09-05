@@ -35,6 +35,9 @@ public class Rocket {
     private String rocket_name;
     @Column(name = "rocket_type")
     private String rocket_type;
-
+    @Column(name="created_at")
+    private String created_at;
+    @Column(name = "updated_at")
+    private String updated_at;
 
 }

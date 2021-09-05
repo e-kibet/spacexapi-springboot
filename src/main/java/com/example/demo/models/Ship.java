@@ -50,5 +50,8 @@ public class Ship {
     private String url;
     @Column(name = "image")
     private String image;
-
+    @Column(name="created_at")
+    private String created_at;
+    @Column(name = "updated_at")
+    private String updated_at;
 }
