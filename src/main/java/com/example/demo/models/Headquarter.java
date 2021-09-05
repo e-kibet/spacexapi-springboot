@@ -1,14 +1,19 @@
 package com.example.demo.models;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "headquarters")
 @ToString
+@Getter
+@Setter
+@Accessors(chain=true)
 @AllArgsConstructor
 @NoArgsConstructor
 public class Headquarter {
@@ -21,9 +26,13 @@ public class Headquarter {
     private String city;
     @Column(name="state")
     private String state;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name="created_at")
-    private String created_at;
+    private Date created_at;
+    @UpdateTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
-    private String updated_at;
+    private Date updated_at;
 
 }
