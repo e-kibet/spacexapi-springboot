@@ -2,21 +2,19 @@ package com.example.demo.models;
 
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
 import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "headquarters")
 @ToString
 @Getter
+@Data
+@EqualsAndHashCode(callSuper = false)
 @Setter
 @Accessors(chain=true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class Headquarter {
+public class Headquarter extends DateAudit {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
@@ -26,13 +24,13 @@ public class Headquarter {
     private String city;
     @Column(name="state")
     private String state;
-    @CreationTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="created_at")
-    private Date created_at;
-    @UpdateTimestamp
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "updated_at")
-    private Date updated_at;
+//    @CreationTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name="created_at")
+//    private Date created_at;
+//    @UpdateTimestamp
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Column(name = "updated_at")
+//    private Date updated_at;
 
 }

@@ -1,10 +1,14 @@
 package com.example.demo.payload;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
+@EqualsAndHashCode()
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class HeadquarterResponse {
     private Integer id;
     private String address;
@@ -12,13 +16,4 @@ public class HeadquarterResponse {
     private String state;
     private Date created_at;
     private Date updated_at;
-
-    public HeadquarterResponse(Integer id, String address, String city, String state, Date created_at, Date updated_at){
-        this.id = id;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }
 }

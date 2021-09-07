@@ -17,13 +17,13 @@ public class PagedResponse<T> {
 
     public PagedResponse() {}
 
-    public PagedResponse(List<T> content, int page, int size, long totalElements, int totalPages, boolean last) {
-        setContent(content);
+    public PagedResponse(int page, int size, long totalElements, int totalPages, boolean last, List<T> content) {
         this.page = page;
         this.size = size;
         this.totalElements = totalElements;
         this.totalPages = totalPages;
         this.last = last;
+        setContent(content);
     }
 
     public List<T> getContent() {
