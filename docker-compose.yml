@@ -1,0 +1,36 @@
+version: '3.8'
+services:
+  db:
+    image: mysql
+    container_name: spacex-api-db
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'spacex_db'
+      MYSQL_PASSWORD: 'dev'
+      MYSQL_ROOT_PASSWORD: 'dev'
+    ports:
+      - '3306:3306'
+    networks:
+      - spacex-network
+    healthcheck:
+      test: "/usr/bin/mysql --user=root --password=root --execute \"SHOW DATABASES;\""
+      interval: 2s
+      timeout: 20s
+      retries: 10
+    volumes:
+      - ./docker:/docker-entrypoint-initdb.d
+  application:
+    container_name: spacex-application
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - spacex-network
+    depends_on:
+      - "db"
+networks:
+  spacex-network:
+    name: spacex-network
+    driver: bridge
