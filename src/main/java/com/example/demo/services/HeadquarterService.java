@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import java.util.Arrays;
 import java.util.Collections;
@@ -26,8 +28,11 @@ public class HeadquarterService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public void createHeadquarter(Headquarter headquarter){
-        headquarterRepository.save(headquarter);
+    public ResponseEntity<Headquarter> createHeadquarter(Headquarter headquarterRequest){
+        Headquarter headquarter = new Headquarter();
+        modelMapper.map(headquarterRequest, headquarter);
+        Headquarter newHeadquarter = headquarterRepository.save(headquarter);
+        return new ResponseEntity<>(newHeadquarter, HttpStatus.CREATED);
     }
 
     public PagedResponse<HeadquarterResponse> getHeadQuarters(int page, int size){

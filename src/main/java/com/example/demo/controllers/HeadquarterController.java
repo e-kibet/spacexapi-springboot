@@ -9,7 +9,6 @@ import com.example.demo.utils.AppConstants;
 import com.example.demo.utils.AppUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,9 +20,8 @@ public class HeadquarterController {
     private HeadquarterService headquarterService;
 
     @PostMapping
-    public @ResponseBody String create(@RequestBody Headquarter headquarter){
-        headquarterService.createHeadquarter(headquarter);
-        return "Saved";
+    public @ResponseBody ResponseEntity<Headquarter> create(@RequestBody Headquarter headquarter){
+        return headquarterService.createHeadquarter(headquarter);
     }
     @GetMapping
     public PagedResponse<HeadquarterResponse> getHeadquarters(
